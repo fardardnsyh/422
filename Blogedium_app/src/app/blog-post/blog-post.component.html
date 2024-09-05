@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+<div class="m-2.5 lg:m-20 mt-20 md:mt-16">
+    <div class="lg:w-full">
+      <img class="rounded-lg lg:w-full h-450px" [src]='imageUrl' alt="" />
+    </div>
+    <div class="mt-5">
+      <p class="text-sm text-gray-500">Written by Admin</p>
+      <p class="text-sm text-gray-500">{{ DateFormterring('2024-08-01T12:34:56Z') }}</p>
+    </div>
+    <div class="mt-5">
+      <p>{{content}}</p>
+    </div>
+    <div class="mt-5">
+      <h5 class="text-lg font-extrabold">Comments</h5>
+      <div class="mt-4 space-y-4">
+        @for (comment of comments; track comment.Id){
+            <div class="bg-white p-4 shadow rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                  <h6 class="text-md font-semibold">{{ comment.FirstName + ' ' + comment.LastName }}</h6>
+                  <span class="text-sm text-gray-500">
+                    {{ null }}
+                  </span>
+                </div>
+                <p class="text-gray-700">{{ comment.CommentContent }}</p>
+              </div>
+        }
+      </div>
+    </div>
+    <div class="mt-5">
+      <h5 class="text-lg font-extrabold">Add Comment</h5>
+      <form  [formGroup]="commentForm" (ngSubmit)="handleCommentSubmit()">
+      <div class="mt-4 space-y-4 bg-white p-4 shadow rounded-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <input
+            type="text"
+            name="firstname"
+            placeholder="First Name"
+            class="w-full p-2 border border-gray-300 rounded-lg"
+            formControlName="firstname"
+          />
+          <input
+            type="text"
+            name="lastname"
+            placeholder="Last Name"
+            formControlName="lastname"
+            class="w-full p-2 border border-gray-300 rounded-lg"
+          />
+        </div>
+        <textarea
+          name="commentcontent"
+          placeholder="Comment"
+          formControlName="commentcontent"
+          class="w-full p-2 border border-gray-300 rounded-lg"
+        ></textarea>
+        <button class="px-4 py-2 bg-black text-white rounded-lg">
+          Add Comment
+        </button>
+      </div>
+      @if(loading){
+        <div class="spinner-overlay">
+        <p-progressSpinner
+          ariaLabel="loading"
+        ></p-progressSpinner>
+      </div>
+      }
+    </form>
+    </div>
+  </div>
+  

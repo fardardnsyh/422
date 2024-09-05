@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Blogedium_api.props" />
+</Project>

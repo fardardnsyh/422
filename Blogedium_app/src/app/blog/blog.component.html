@@ -1,0 +1,16 @@
+<div (click)="handleRoute()" class="max-w-sm rounded-xl overflow-hidden shadow-md bg-white mb-4">
+    <img class="w-full h-44" [src]="imageUrl" alt="Blog post image">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">{{title}}</div>
+      <p class="text-gray-700 text-base">
+        {{description}}
+      </p>
+    </div> 
+    <div class="px-6 pt-4 pb-2">
+      <span class="text-gray-600 text-sm">{{date}}</span>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-gray-600 text-sm">{{reads}} Reads</span>
+        <span class="text-gray-600 text-sm">{{comments}} Comments</span>
+      </div>
+    </div>
+</div>
